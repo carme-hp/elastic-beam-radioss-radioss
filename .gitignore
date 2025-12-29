@@ -1,0 +1,11 @@
+*.vtk 
+*.rst
+*.out
+*.tmp
+*.msg
+*.tcl
+*.cfg
+precice-exports/
+precice-profiling/
+*A*
+*T*
