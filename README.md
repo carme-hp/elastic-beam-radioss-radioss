@@ -1,6 +1,6 @@
 ### Elastic Beam Case
 
-This case shows an elastic beam splitted into two segments to test a preliminary OpenRadioss-OpenRadioss code coupling through preCICE. For this purpose, each segment of the beam is individually defined in OpenRadioss by fixing the end corresponding to the extreme and leaving free to move and deform the end corresponding to the coupling interface. 
+This case shows an elastic beam split into two segments coupled via preCICE. Segment 1 (s1) and segment 2 (s2) are simulated by an OpenRadioss solver with different boundary conditions. 
 
 While s1 isn't subject to any load, an additional pressure load is applied to s2; by individually simulating these conditions in OpenRadioss it is possible to observe the deformation that occours within the s2 element. The goal of the example is to therefore verify that the coupling through preCICE is successfull; specifically, a successfull exchange of updated displacements from s2 to s1 via preCICE is achieved, with s1 sending back forces to s2 (currently commented out).
 
