@@ -2,7 +2,17 @@
 
 This case shows an elastic beam split into two segments coupled via preCICE. Segment 1 (s1) and segment 2 (s2) are simulated by an OpenRadioss solver with different boundary conditions. 
 
-While s1 isn't subject to any load, an additional pressure load is applied to s2; by individually simulating these conditions in OpenRadioss it is possible to observe the deformation that occours within the s2 element. The goal of the example is to therefore verify that the coupling through preCICE is successfull; specifically, a successfull exchange of updated displacements from s2 to s1 via preCICE is achieved, with s1 sending back forces to s2 (currently commented out).
+**Coupling**
+
+- s2 sends displacements to s1. 
+- s1 sends forces to s2 (under development).
+
+**Boundary Conditions**
+
+- s1 is not subject to any load. The outer end of the segment is fixed, while the displacements on the inner end are prescribed by the data received through preCICE.
+- s2 also had the outer end of the segment fixed and has an additional pressure load on the top.
+
+The goal of the example is to therefore verify that the coupling through preCICE is successful; specifically, that the  exchange of displacements from s2 to s1 via preCICE is achieved.
 
 ### How to Run
 
