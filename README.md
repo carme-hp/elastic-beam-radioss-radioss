@@ -1,7 +1,18 @@
 ### Elastic Beam Case
 
-This case shows an elastic beam splitted into two segments. Each segment of the beam is simulated in OpenRadioss and coupled with preCICE. A pressure load is applied to s2, which causes some deformation.
-s2 then sends the updated displacements to s1 via preCICE. s1, sends back the force (currently commented out).
+This case shows an elastic beam split into two segments coupled via preCICE. Segment 1 (s1) and segment 2 (s2) are simulated by an OpenRadioss solver with different boundary conditions. 
+
+**Coupling**
+
+- s2 sends displacements to s1. 
+- s1 sends forces to s2 (under development).
+
+**Boundary Conditions**
+
+- s1 is not subject to any load. The outer end of the segment is fixed, while the displacements on the inner end are prescribed by the data received through preCICE.
+- s2 also had the outer end of the segment fixed and has an additional pressure load on the top.
+
+The goal of the example is to therefore verify that the coupling through preCICE is successful; specifically, that the  exchange of displacements from s2 to s1 via preCICE is achieved.
 
 ### How to Run
 
@@ -12,3 +23,6 @@ If you use the provided setup script, you can convert the animation files genera
 
 ### Disclaimer:
 The original case was created by Elisa Santoro and Mathias Andrae
+
+### Further goals:
+An additional test case, with a single end of the beam being fixed and the other being left free to move, is also being worked on and will be posted soon.  
