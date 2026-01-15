@@ -7,29 +7,29 @@
       enabled="true" />
   </log>
 
-  <!-- <data:vector name="FORCES" /> -->
+  <data:vector name="FORCES" />
   <data:vector name="DISPLACEMENTS" />
 
   <mesh name="OpenRadioss-Mesh1" dimensions="3">
-    <!-- <use-data name="FORCES" /> -->
+    <use-data name="FORCES" />
     <use-data name="DISPLACEMENTS" />
   </mesh>
 
   <mesh name="OpenRadioss-Mesh2" dimensions="3">
     <use-data name="DISPLACEMENTS" />
-    <!-- <use-data name="FORCES" /> -->
+    <use-data name="FORCES" />
   </mesh>
 
   <participant name="s1">
     <provide-mesh name="OpenRadioss-Mesh1" />
     <receive-mesh name="OpenRadioss-Mesh2" from="s2" />
-    <!-- <write-data name="FORCES" mesh="OpenRadioss-Mesh1" /> -->
+    <write-data name="FORCES" mesh="OpenRadioss-Mesh1" />
     <read-data name="DISPLACEMENTS" mesh="OpenRadioss-Mesh1" />
-    <!-- <mapping:nearest-neighbor
+    <mapping:nearest-neighbor
       direction="write"
       from="OpenRadioss-Mesh1"
       to="OpenRadioss-Mesh2"
-      constraint="conservative" /> -->
+      constraint="conservative" />
     <mapping:nearest-neighbor
       direction="read"
       from="OpenRadioss-Mesh2"
@@ -43,7 +43,7 @@
     <export:vtu directory="precice-exports"/>
     <provide-mesh name="OpenRadioss-Mesh2" />
     <write-data name="DISPLACEMENTS" mesh="OpenRadioss-Mesh2" />
-    <!-- <read-data name="FORCES" mesh="OpenRadioss-Mesh2" /> -->
+    <read-data name="FORCES" mesh="OpenRadioss-Mesh2" />
   </participant>
 
   <m2n:sockets acceptor="s1" connector="s2" exchange-directory="../" />
@@ -53,6 +53,6 @@
     <max-time value="3.0" />
     <time-window-size value="1e-1" />
     <exchange data="DISPLACEMENTS" mesh="OpenRadioss-Mesh2" from="s2" to="s1" />
-    <!-- <exchange data="FORCES" mesh="OpenRadioss-Mesh2" from="s1" to="s2" /> -->
+    <exchange data="FORCES" mesh="OpenRadioss-Mesh2" from="s1" to="s2" />
   </coupling-scheme:parallel-explicit>
 </precice-configuration>
